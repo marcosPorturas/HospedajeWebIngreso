@@ -1,0 +1,11 @@
+server:  port: 8017
+
+spring:
+  data:
+    mongodb:
+      database: dbhospedajeweb
+      port: 27017
+      host: localhost
+      username: marco
+      password: marco
+metodo:  listarsocios: listarSocios  obtenerSocio: obtenerSocio  agregarSocio: agregarSocio    url:  socio:    host: http://localhost:8013/socio  
