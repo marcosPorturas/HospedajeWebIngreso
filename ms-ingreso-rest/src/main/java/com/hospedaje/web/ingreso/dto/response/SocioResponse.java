@@ -1,4 +1,4 @@
-package com.hospedaje.web.ingreso.dto;
+package com.hospedaje.web.ingreso.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
