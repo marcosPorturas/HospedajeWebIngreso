@@ -16,7 +16,7 @@ public class ProductoResponse implements Serializable{
 	private String detalle;
 	private Integer stock;
 	private Double precioUnitario;
-	private Date creationDate;
+	private String creationDate;
 
 	
 	public ProductoResponse () {
@@ -55,13 +55,15 @@ public class ProductoResponse implements Serializable{
 		this.precioUnitario = precioUnitario;
 	}
 
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
+
+	
 
 
 	

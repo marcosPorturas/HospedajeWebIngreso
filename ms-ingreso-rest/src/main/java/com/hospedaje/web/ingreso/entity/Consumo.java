@@ -18,7 +18,7 @@ import lombok.Builder;
 public class Consumo {
 	
 	@Id
-	private Long idConsumo;
+	private String idConsumo;
 	
 	@Field("id_ingreso")
 	private Integer idIngreso;
@@ -26,7 +26,7 @@ public class Consumo {
 	@Field("list_product")
 	private List<ProductoRequest> listProduct;
 
-	public Long getIdConsumo() {
+	public String getIdConsumo() {
 		return idConsumo;
 	}
 
@@ -34,7 +34,11 @@ public class Consumo {
 		return idIngreso;
 	}
 
-	public void setIdConsumo(Long idConsumo) {
+	public List<ProductoRequest> getListProduct() {
+		return listProduct;
+	}
+
+	public void setIdConsumo(String idConsumo) {
 		this.idConsumo = idConsumo;
 	}
 
@@ -42,13 +46,12 @@ public class Consumo {
 		this.idIngreso = idIngreso;
 	}
 
-	public List<ProductoRequest> getListProduct() {
-		return listProduct;
-	}
-
 	public void setListProduct(List<ProductoRequest> listProduct) {
 		this.listProduct = listProduct;
 	}
+	
+
+	
 
 
 }

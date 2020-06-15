@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
-import com.hospedaje.web.ingreso.client.SocioProxy;
+import com.hospedaje.web.ingreso.client.feign.SocioFeign;
 import com.hospedaje.web.ingreso.dto.request.IngresoRequest;
 import com.hospedaje.web.ingreso.dto.response.IngresoResponse;
 import com.hospedaje.web.ingreso.dto.response.SocioResponse;
@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
 public class IngresoServiceImplement implements IngresoService{
 	
 	@Autowired
-	SocioProxy socioProxy;
+	SocioFeign socioProxy;
 	
 	@Autowired
 	IngresoRepository ingresoRepository;

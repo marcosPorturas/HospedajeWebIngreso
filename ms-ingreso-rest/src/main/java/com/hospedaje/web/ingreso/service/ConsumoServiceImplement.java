@@ -1,5 +1,6 @@
 package com.hospedaje.web.ingreso.service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hospedaje.web.ingreso.client.ProductoProxy;
+import com.hospedaje.web.ingreso.client.feign.ProductoFeign;
 import com.hospedaje.web.ingreso.dto.request.ProductoRequest;
 import com.hospedaje.web.ingreso.dto.response.ConsumoResponse;
 import com.hospedaje.web.ingreso.dto.response.ProductoConsumo;
@@ -26,7 +27,7 @@ public class ConsumoServiceImplement implements ConsumoService{
 	ConsumoRepository consumoRepository;
 	
 	@Autowired
-	ProductoProxy productoProxy;
+	ProductoFeign productoProxy;
 	
 	@Override
 	public Mono<ConsumoResponse> agregarConsumo(Integer idIngreso, List<ProductoRequest> listProducto) {
@@ -45,16 +46,14 @@ public class ConsumoServiceImplement implements ConsumoService{
 							.build())
 					.flatMap(consumoRepository::save)
 					.map(this::convertToConsumoResponse)
-					.single();
+					.singleOrEmpty();
 					
 	}
 	
 	
 	
-	private List<Integer> getAllIdProducto(List<ProductoRequest> listProducto){
-		return listProducto.stream()
-				.map(producto->producto.getIdProducto())
-				.collect(Collectors.toList());
+	private int[] getAllIdProducto(List<ProductoRequest> listProducto){
+		return listProducto.stream().mapToInt(producto->producto.getIdProducto()).toArray();
 	}
 	
 	private ConsumoResponse convertToConsumoResponse(Consumo consumo) {
