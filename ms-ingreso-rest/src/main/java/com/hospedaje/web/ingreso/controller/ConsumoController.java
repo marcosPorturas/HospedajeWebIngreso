@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hospedaje.web.ingreso.dto.request.ConsumoRequest;
 import com.hospedaje.web.ingreso.dto.response.ConsumoResponse;
+import com.hospedaje.web.ingreso.entity.Consumo;
 import com.hospedaje.web.ingreso.service.ConsumoService;
 
 import reactor.core.publisher.Mono;
@@ -20,9 +21,8 @@ public class ConsumoController {
 	ConsumoService consumoService;
 	
 	@PostMapping("/agregar")
-	public Mono<ConsumoResponse> agregarConsumo(@RequestBody ConsumoRequest consumoRequest){
-		return consumoService.agregarConsumo(consumoRequest.getIdIngreso(), 
-				consumoRequest.getListProducto());
+	public Mono<Consumo> agregarConsumo(@RequestBody ConsumoRequest consumoRequest){
+		return consumoService.agregarConsumo(consumoRequest);
 	}
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.hospedaje.web.ingreso.dto.request.ProductoRequest;
+import com.hospedaje.web.ingreso.dto.response.ProductoConsumo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class Consumo {
 	private Integer idIngreso;
 	
 	@Field("list_product")
-	private List<ProductoRequest> listProduct;
+	private List<ProductoConsumo> listProductoConsumo;
 
 	public String getIdConsumo() {
 		return idConsumo;
@@ -32,10 +32,6 @@ public class Consumo {
 
 	public Integer getIdIngreso() {
 		return idIngreso;
-	}
-
-	public List<ProductoRequest> getListProduct() {
-		return listProduct;
 	}
 
 	public void setIdConsumo(String idConsumo) {
@@ -46,9 +42,14 @@ public class Consumo {
 		this.idIngreso = idIngreso;
 	}
 
-	public void setListProduct(List<ProductoRequest> listProduct) {
-		this.listProduct = listProduct;
+	public List<ProductoConsumo> getListProductoConsumo() {
+		return listProductoConsumo;
 	}
+
+	public void setListProductoConsumo(List<ProductoConsumo> listProductoConsumo) {
+		this.listProductoConsumo = listProductoConsumo;
+	}
+
 	
 
 	

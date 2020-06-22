@@ -10,6 +10,7 @@ public class ProductoConsumo {
 	private Integer idProducto;
 	private String detalle;
 	private Integer cantidad;
+	private String fechaPedido;
 	private Double precioUnitario;
 	private Double subTotal;
 	
@@ -42,6 +43,12 @@ public class ProductoConsumo {
 	}
 	public void setSubTotal(Double subTotal) {
 		this.subTotal = subTotal;
+	}
+	public String getFechaPedido() {
+		return fechaPedido;
+	}
+	public void setFechaPedido(String fechaPedido) {
+		this.fechaPedido = fechaPedido;
 	}
 
 }
