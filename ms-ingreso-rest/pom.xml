@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hospedaje.web.ingreso</groupId>
-	<artifactId>Application</artifactId>
+	<artifactId>ms-ingreso-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms-ingreso-rest</name>
 	<description>microservicio para administrar los hospedajes e ingresos</description>

@@ -6,19 +6,21 @@ import org.springframework.stereotype.Component;
 import com.hospedaje.web.ingreso.client.feign.SocioFeign;
 import com.hospedaje.web.ingreso.dto.response.SocioResponse;
 
+import reactor.core.publisher.Mono;
+
 
 @Component
 public class SocioProxyImplement implements SocioProxy{
 
 	@Autowired
-	private SocioFeign socioProxy;
+	private SocioFeign socioFeign;
 	
 	
 	@Override
 	public SocioResponse obtenerSocio(Integer idSocio) {
 		// TODO Auto-generated method stub
-		SocioResponse socioResponse = socioProxy.obtenerSocio(idSocio);
-		return socioResponse;
+		return socioFeign.obtenerSocio(idSocio);
+		
 	}
 
 }

@@ -7,5 +7,4 @@ spring:
       port: 27017
       host: localhost
       username: marco
-      password: marco
-metodo:  listarsocios: listarSocios  obtenerSocio: obtenerSocio  agregarSocio: agregarSocio    url:  socio:    host: http://localhost:8013/socio  producto:    host: http://localhost:8010/producto  
+      password: marco    url:  socio:    host: http://localhost:8013/socio  producto:    host: http://localhost:8010/producto  

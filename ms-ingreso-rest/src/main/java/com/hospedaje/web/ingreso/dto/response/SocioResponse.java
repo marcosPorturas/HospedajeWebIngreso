@@ -1,16 +1,25 @@
 package com.hospedaje.web.ingreso.dto.response;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Builder
 @AllArgsConstructor
-public class SocioResponse {
+@NoArgsConstructor
+public class SocioResponse implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idSocio;
 	private String nombres;
 	private String apellidos;
 	private String telefono;
+	private String dni;
 	private String creationDate;
 	private boolean enabled;
 	
@@ -49,6 +58,12 @@ public class SocioResponse {
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 }

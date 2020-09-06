@@ -2,7 +2,8 @@ package com.hospedaje.web.ingreso.dto.response;
 
 import java.util.List;
 
-import com.hospedaje.web.ingreso.dto.request.ProductoRequest;
+import com.hospedaje.web.ingreso.dto.request.ProductoConsumo;
+import com.hospedaje.web.ingreso.dto.request.ProductoIngreso;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.Builder;
 public class ConsumoResponse {
 	
 	private Integer idIngreso;
-	private List<ProductoConsumo> listProducto;
+	private List<ProductoStock> listProducto;
 	
 	public Integer getIdIngreso() {
 		return idIngreso;
@@ -20,10 +21,10 @@ public class ConsumoResponse {
 	public void setIdIngreso(Integer idIngreso) {
 		this.idIngreso = idIngreso;
 	}
-	public List<ProductoConsumo> getListProducto() {
+	public List<ProductoStock> getListProducto() {
 		return listProducto;
 	}
-	public void setListProducto(List<ProductoConsumo> listProducto) {
+	public void setListProducto(List<ProductoStock> listProducto) {
 		this.listProducto = listProducto;
 	}
 

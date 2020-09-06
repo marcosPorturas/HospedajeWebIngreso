@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hospedaje.web.ingreso.dto.response.SocioResponse;
 
+import reactor.core.publisher.Mono;
+
 
 @FeignClient(name="socio", url="${url.socio.host}")
 public interface SocioFeign {
 
-	@GetMapping("/{id}")
-	SocioResponse obtenerSocio(@PathVariable("id")Integer idSocio);
+	@GetMapping("/{idSocio}")
+	SocioResponse obtenerSocio(@PathVariable("idSocio")Integer idSocio);
 }

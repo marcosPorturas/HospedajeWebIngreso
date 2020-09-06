@@ -5,18 +5,21 @@ import java.util.List;
 public class ConsumoRequest {
 	
 	private Integer idIngreso;
-	private List<ProductoRequest> listProducto;
+	private List<ProductoConsumo> listProducto;
 	
 	public Integer getIdIngreso() {
 		return idIngreso;
 	}
-	public List<ProductoRequest> getListProducto() {
-		return listProducto;
-	}
+
 	public void setIdIngreso(Integer idIngreso) {
 		this.idIngreso = idIngreso;
 	}
-	public void setListProducto(List<ProductoRequest> listProducto) {
+
+	public List<ProductoConsumo> getListProducto() {
+		return listProducto;
+	}
+
+	public void setListProducto(List<ProductoConsumo> listProducto) {
 		this.listProducto = listProducto;
 	}
 
