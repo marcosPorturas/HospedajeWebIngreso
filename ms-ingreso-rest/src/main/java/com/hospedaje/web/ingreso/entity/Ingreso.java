@@ -38,8 +38,8 @@ public class Ingreso implements Serializable{
 	@Field("costo_ingreso")
 	private Double costoIngreso;
 	
-	@Field("enabled")
-	private boolean enabled;
+	@Field("ingreso_status")
+	private IngresoStatus ingresoStatus;
 
 	public Integer getIdIngreso() {
 		return idIngreso;
@@ -63,10 +63,6 @@ public class Ingreso implements Serializable{
 
 	public Double getCostoIngreso() {
 		return costoIngreso;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
 	}
 
 	public void setIdIngreso(Integer idIngreso) {
@@ -93,7 +89,15 @@ public class Ingreso implements Serializable{
 		this.costoIngreso = costoIngreso;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public IngresoStatus getIngresoStatus() {
+		return ingresoStatus;
 	}
+
+	public void setIngresoStatus(IngresoStatus ingresoStatus) {
+		this.ingresoStatus = ingresoStatus;
+	}
+
+	
+
+
 }

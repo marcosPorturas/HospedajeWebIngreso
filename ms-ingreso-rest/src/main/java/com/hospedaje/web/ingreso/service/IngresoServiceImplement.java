@@ -18,8 +18,10 @@ import com.hospedaje.web.ingreso.dto.response.SocioResponse;
 import com.hospedaje.web.ingreso.dto.response.ValidarStockResponse;
 import com.hospedaje.web.ingreso.entity.Consumo;
 import com.hospedaje.web.ingreso.entity.Ingreso;
+import com.hospedaje.web.ingreso.entity.IngresoStatus;
 import com.hospedaje.web.ingreso.repository.ConsumoRepository;
 import com.hospedaje.web.ingreso.repository.IngresoRepository;
+import com.hospedaje.web.ingreso.repository.IngresoStatusRepository;
 import com.hospedaje.web.ingreso.util.Utilitario;
 
 import reactor.core.publisher.Mono;
@@ -39,17 +41,24 @@ public class IngresoServiceImplement implements IngresoService{
 	
 	@Autowired
 	ConsumoRepository consumoRepository;
+	
+	@Autowired
+	IngresoStatusRepository ingresoStatusRepository;
+	
 		
 	@Override
 	public Mono<IngresoResponse> registrarIngreso(IngresoRequest ingresoRequest) {
-		return	Mono.just(socioProxy.obtenerSocio(ingresoRequest.getIdSocio()))
-					.map(socio->convertToIngresoEntity(socio,ingresoRequest))
+		
+		Mono<SocioResponse> socio = Mono.just(socioProxy.obtenerSocio(ingresoRequest.getIdSocio()));
+		
+		return	Mono.zip(socio,ingresoStatusRepository.findById(0))
+					.map(tupla->convertToIngresoEntity(tupla.getT1(),ingresoRequest,tupla.getT2()))
 					.flatMap(ingresoRepository::save)
 					.map(this::convertToIngresoResponse);
 	
 	}
 
-	private Ingreso convertToIngresoEntity(SocioResponse socio,IngresoRequest ingreso) {
+	private Ingreso convertToIngresoEntity(SocioResponse socio,IngresoRequest ingreso,IngresoStatus status) {
 	
 		return Ingreso.builder()
 				.idIngreso(ingreso.getIdIngreso())
@@ -57,7 +66,7 @@ public class IngresoServiceImplement implements IngresoService{
 				.creationDate(new Date())
 				.numeroInvitados(ingreso.getNumeroInvitados())
 				.costoIngreso(ingreso.getCostoIngreso())
-				.enabled(false).build();
+				.ingresoStatus(status).build();
 		
 	}
 	
@@ -70,6 +79,7 @@ public class IngresoServiceImplement implements IngresoService{
 				.fechaIngreso(Utilitario.convertirFechaddMMYYYY(ingreso.getCreationDate()))
 				.horaIngreso(Utilitario.convertirHoraHHmmss(ingreso.getCreationDate()))
 				.numeroInvitados(ingreso.getNumeroInvitados())
+				.status(ingreso.getIngresoStatus().getDescripcion())
 				.build();
 	}
 	
