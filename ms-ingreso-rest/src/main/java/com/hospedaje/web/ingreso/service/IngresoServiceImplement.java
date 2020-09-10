@@ -84,16 +84,25 @@ public class IngresoServiceImplement implements IngresoService{
 	}
 	
 	private Consumo convertToEntityConsumo(List<ProductoStock> listProductos,ConsumoRequest consumoRequest){
+		
+		Double totalConsumo = 0.00;
+		
+		totalConsumo = listProductos.stream()
+			.mapToDouble(producto->producto.getSubTotal()).sum();
+		
 		return Consumo.builder()
 				.idIngreso(consumoRequest.getIdIngreso())
 				.listProductoConsumo(listProductos)
+				.totalConsumo(totalConsumo)
 				.build();
 	}
 	
 	private ConsumoResponse convertToConsumoResponse(Consumo consumo) {
 		return ConsumoResponse.builder()
 				.idIngreso(consumo.getIdIngreso())
-				.listProducto(consumo.getListProductoConsumo()).build();
+				.listProducto(consumo.getListProductoConsumo())
+				.totalConsumo(consumo.getTotalConsumo())
+				.build();
 	}
 	
 

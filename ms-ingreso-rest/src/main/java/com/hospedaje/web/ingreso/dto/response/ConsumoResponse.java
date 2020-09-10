@@ -14,6 +14,8 @@ public class ConsumoResponse {
 	
 	private Integer idIngreso;
 	private List<ProductoStock> listProducto;
+	private Double totalConsumo;
+	
 	
 	public Integer getIdIngreso() {
 		return idIngreso;
@@ -26,6 +28,12 @@ public class ConsumoResponse {
 	}
 	public void setListProducto(List<ProductoStock> listProducto) {
 		this.listProducto = listProducto;
+	}
+	public Double getTotalConsumo() {
+		return totalConsumo;
+	}
+	public void setTotalConsumo(Double totalConsumo) {
+		this.totalConsumo = totalConsumo;
 	}
 
 }

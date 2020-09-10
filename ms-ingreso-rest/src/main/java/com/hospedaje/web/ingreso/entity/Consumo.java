@@ -26,6 +26,9 @@ public class Consumo {
 	
 	@Field("list_product")
 	private List<ProductoStock> listProductoConsumo;
+	
+	@Field("total_consumo")
+	private Double totalConsumo;
 
 	public String getIdConsumo() {
 		return idConsumo;
@@ -49,6 +52,14 @@ public class Consumo {
 
 	public void setListProductoConsumo(List<ProductoStock> listProductoConsumo) {
 		this.listProductoConsumo = listProductoConsumo;
+	}
+
+	public Double getTotalConsumo() {
+		return totalConsumo;
+	}
+
+	public void setTotalConsumo(Double totalConsumo) {
+		this.totalConsumo = totalConsumo;
 	}
 
 	
