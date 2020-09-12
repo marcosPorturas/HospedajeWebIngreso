@@ -27,4 +27,7 @@ public interface ProductoFeign {
 	
 	@PostMapping("/agotado")
 	ValidarStockResponse validarStock(@RequestBody List<ProductoConsumo> lstProductoConsumo);
+	
+	@PostMapping("/actualizar/stock")
+	List<ProductoResponse> actualizarStock(@RequestBody List<ProductoConsumo> lstProductoConsumo);
 }

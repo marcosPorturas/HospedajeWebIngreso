@@ -115,7 +115,8 @@ public class IngresoServiceImplement implements IngresoService{
 				.filter(validar->validar.getAgotado().size()==0)
 				.map(validar->convertToEntityConsumo(validar.getAlmacen(), consumoRequest))
 				.flatMap(consumoRepository::save)
-				.map(this::convertToConsumoResponse);
+				.map(this::convertToConsumoResponse)
+		.doOnSuccess(result->productoProxy.actualizarStock(consumoRequest.getListProducto()));
 	}
 	
 }

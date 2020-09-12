@@ -10,6 +10,7 @@ import com.hospedaje.web.ingreso.dto.request.ProductoConsumo;
 import com.hospedaje.web.ingreso.dto.response.ProductoResponse;
 import com.hospedaje.web.ingreso.dto.response.ValidarStockResponse;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -27,6 +28,12 @@ public class ProductoProxyImplement implements ProductoProxy{
 	public Mono<ValidarStockResponse> validarStock(List<ProductoConsumo> lstProductoConsumo) {
 		// TODO Auto-generated method stub
 		return Mono.just(productoFeign.validarStock(lstProductoConsumo));
+	}
+
+	@Override
+	public Flux<ProductoResponse> actualizarStock(List<ProductoConsumo> lstProductoConsumo) {
+		// TODO Auto-generated method stub
+		return Flux.fromIterable(productoFeign.actualizarStock(lstProductoConsumo));
 	}
 
 }
