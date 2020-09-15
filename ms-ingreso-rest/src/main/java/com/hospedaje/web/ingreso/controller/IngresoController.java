@@ -1,6 +1,8 @@
 package com.hospedaje.web.ingreso.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,11 @@ public class IngresoController {
 	@Autowired
 	IngresoService ingresoService;
 	
+	
+	@GetMapping("/{idIngreso}")
+	public Mono<IngresoResponse> agregarIngreso(@PathVariable("idIngreso")Integer idIngreso) {
+		return ingresoService.consultarIngreso(idIngreso);
+	}
 	
 	@PostMapping("/agregar")
 	public Mono<IngresoResponse> agregarIngreso(@RequestBody IngresoRequest ingresoRequest) {

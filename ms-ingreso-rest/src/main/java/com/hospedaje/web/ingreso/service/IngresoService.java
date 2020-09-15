@@ -14,4 +14,7 @@ public interface IngresoService {
 	
 	Mono<ConsumoResponse> registrarConsumo(ConsumoRequest consumoRequest);
 	
+	Mono<IngresoResponse> consultarIngreso(Integer idIngreso);
+ 	
+	
 }

@@ -118,5 +118,12 @@ public class IngresoServiceImplement implements IngresoService{
 				.map(this::convertToConsumoResponse)
 		.doOnSuccess(result->productoProxy.actualizarStock(consumoRequest.getListProducto()));
 	}
+
+	@Override
+	public Mono<IngresoResponse> consultarIngreso(Integer idIngreso) {
+		// TODO Auto-generated method stub
+		return ingresoRepository.findById(idIngreso)
+				.map(this::convertToIngresoResponse);
+	}
 	
 }
