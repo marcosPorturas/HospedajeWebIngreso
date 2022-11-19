@@ -1,10 +1,0 @@
-server:  port: 8017
-
-spring:
-  data:
-    mongodb:
-      database: dbhospedajeweb
-      port: 27017
-      host: localhost
-      username: marco
-      password: marco    url:  socio:    host: http://localhost:8013/socio  producto:    host: http://localhost:8010/producto  

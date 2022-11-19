@@ -1,0 +1,94 @@
+openapi: 3.0.1
+info:
+  title: Microservice Admission
+  description: |-
+    This is a sample partner Server based on the OpenAPI 3.0 specification.  You can find out more about
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /obtener:
+    get:
+      tags:
+        - partner
+      summary: Finds Admission info
+      parameters:
+        - in: query
+          name: codAdmission
+          schema:
+            type: integer
+          required: true
+      description: find info admission
+      operationId: findAdmission
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdmissionResponse'
+  /agregar:
+    post:
+      tags:
+        - partner
+      summary: Finds Partner all info
+      description: add all Admission
+      operationId: addPartner
+      requestBody:
+        description: Create a new partner in the Bussines
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdmissionRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewAdmissionResponse'
+components:
+  schemas:
+    StatusAdmission:
+      type: object
+      properties:
+        code:
+          type: integer
+        description:
+          type: string
+    PartnerInfo:
+      properties:
+        idClient:
+          type: integer
+        fullName:
+          type: string
+    NewAdmissionResponse:
+      type: object
+      properties:
+        idAdmission:
+          type: integer
+        statusAdmission:
+          $ref : '#/components/schemas/StatusAdmission'
+    AdmissionRequest:
+      type: object
+      properties:
+        idClient:
+          type: integer
+        memberInvite:
+          type: integer
+    AdmissionResponse:
+      type: object
+      properties:
+        idAdmision:
+          type: integer
+        partnerInfo:
+          $ref : '#/components/schemas/PartnerInfo'
+        addmisionDate:
+          type: string
+        memberInvite:
+          type: integer
+        admissionPrice:
+          type: number
+        statusAdmission:
+          $ref : '#/components/schemas/StatusAdmission'
